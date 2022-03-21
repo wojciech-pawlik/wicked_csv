@@ -8,24 +8,17 @@ int get_col_pos(char* header_line, const char* col_name)
     remove_newline_char(line);
 <<<<<<< HEAD
     while(strcmp(get_val(line, col_num),"\0") != 0)
-=======
-<<<<<<< HEAD
-    while(strcmp(get_val(line, col_num),"\0") != 0)
     {
         if(strcmp(get_val(line, col_num),col_name) == 0)
             return col_num;
 =======
     char* col = strtok(line, ",");
     while(col != NULL)
->>>>>>> dev
     {
-        if(strcmp(get_val(line, col_num),col_name) == 0)
+        if(strcmp(col,col_name) == 0)
             return col_num;
-<<<<<<< HEAD
-=======
         col = strtok(NULL, ",");
 >>>>>>> 50f151b1b924bb3ea0351047003e6f29d8ecc70e
->>>>>>> dev
         col_num++;
     }
     return -1;
@@ -42,11 +35,6 @@ int get_col_cnt(char* header_line)
     while (strcmp(get_val(line, len), "\0") != 0)
         len++;
 =======
-<<<<<<< HEAD
-    int len = 0;
-    while (strcmp(get_val(line, len), "\0") != 0)
-        len++;
-=======
     char *col = strtok(line, ",");
     int len = 1;
     while(col != NULL)
@@ -55,7 +43,6 @@ int get_col_cnt(char* header_line)
         len++;
     }
 >>>>>>> 50f151b1b924bb3ea0351047003e6f29d8ecc70e
->>>>>>> dev
     return len;
 }
 
@@ -72,9 +59,6 @@ void fill_row(char* line, char* join_type, int col_cnt)
     printf("\n");
 }
 
-<<<<<<< HEAD
-char* get_line(int max_len, FILE *stream)
-=======
 <<<<<<< HEAD
 char* get_line(int max_len, FILE *stream)
 {
@@ -123,56 +107,23 @@ char* get_val(char* line, int pos)
     strncpy(val, line + start, (end-start));
 =======
 char* get_val(const char* line, int pos)
->>>>>>> dev
 {
-    QUOTATION_COUNTER = 0;
-    char next = '\0';
-    size_t n = 0;
-    char* line;
-    line = (char*)malloc(MAX_LINE_LEN*sizeof(char));
-    while((next = (char)fgetc(stream)) != EOF && n < max_len)
+    char l[strlen(line)];
+    strcpy(l, line);
+    char *s = strtok(l, ",");
+    char *val = malloc(strlen(line)*sizeof(char));
+    if (pos == 0)
     {
-        if(next == '\n' && QUOTATION_COUNTER == 0)
-            return line;
-        if(next == '\"')
-            QUOTATION_COUNTER = (QUOTATION_COUNTER + 1) % 2;
-        line[n++] = next;
+        strcpy(val, s);
+        return val;
     }
-    line[n] = '\0';
-    return line;
-}
-
-char* get_val(char* line, int pos)
-{
-    QUOTATION_COUNTER = 0;
-    size_t n = 0;
-    int cnt = 0;
-    size_t start, end;
-    char* val = (char*)malloc(MAX_LINE_LEN*sizeof(char));
-    while(cnt < pos)
+    int i;
+    for(i = 1; i <= pos; ++i)
     {
-        if(line[n] == '\0')
-            return "\0";
-        if(line[n] == ',' && QUOTATION_COUNTER == 0)
-            cnt++;
-        if(line[n] == '\"')
-            QUOTATION_COUNTER = (QUOTATION_COUNTER + 1) % 2;
-        n++;
+        s = strtok(NULL, ",");
     }
-    start = n;
-    while(!((line[n] == ',' || line[n] == '\n') && QUOTATION_COUNTER == 0) && line[n] != '\0')
-    {
-        if(line[n] == '\"')
-            QUOTATION_COUNTER = (QUOTATION_COUNTER + 1) % 2;
-        n++;
-    }
-<<<<<<< HEAD
-    end = line[n] == '\n' ? n-1 : n;
-    strncpy(val, line + start, (end-start));
-=======
     strcpy(val, s);
 >>>>>>> 50f151b1b924bb3ea0351047003e6f29d8ecc70e
->>>>>>> dev
     return val;
 }
 
@@ -190,11 +141,7 @@ int join_line(char* left_line, char* right_path, int left_col_pos, int right_col
 <<<<<<< HEAD
     char* right_line;
 =======
-<<<<<<< HEAD
-    char* right_line;
-=======
 >>>>>>> 50f151b1b924bb3ea0351047003e6f29d8ecc70e
->>>>>>> dev
     remove_newline_char(left_line);
     lval = get_val(left_line, left_col_pos);
 
@@ -204,16 +151,10 @@ int join_line(char* left_line, char* right_path, int left_col_pos, int right_col
     right_line = get_line(MAX_LINE_LEN, file);
     while(strcmp(right_line,"\0") != 0)
 =======
-<<<<<<< HEAD
-
-    right_line = get_line(MAX_LINE_LEN, file);
-    while(strcmp(right_line,"\0") != 0)
-=======
     char right_line[MAX_LINE_LEN];
     fgets(right_line, MAX_LINE_LEN, file);
     while(fgets(right_line, MAX_LINE_LEN, file) != NULL)
 >>>>>>> 50f151b1b924bb3ea0351047003e6f29d8ecc70e
->>>>>>> dev
     {
         remove_newline_char(right_line);
         char* rval = get_val(right_line, right_col_pos);
@@ -230,11 +171,7 @@ int join_line(char* left_line, char* right_path, int left_col_pos, int right_col
 <<<<<<< HEAD
         right_line = get_line(MAX_LINE_LEN, file);
 =======
-<<<<<<< HEAD
-        right_line = get_line(MAX_LINE_LEN, file);
-=======
 >>>>>>> 50f151b1b924bb3ea0351047003e6f29d8ecc70e
->>>>>>> dev
     }
     fclose(file);
     free(lval);
@@ -260,18 +197,10 @@ int join(char* left_path, char* right_path, char* col, char* join_type)
     char* left_line;
     char* right_line;
 =======
-<<<<<<< HEAD
-    char* hl;
-    char* hr;
-    int rows;
-    char* left_line;
-    char* right_line;
-=======
     char hl[MAX_LINE_LEN], hr[MAX_LINE_LEN];
     int rows;
     char left_line[MAX_LINE_LEN], right_line[MAX_LINE_LEN];
 >>>>>>> 50f151b1b924bb3ea0351047003e6f29d8ecc70e
->>>>>>> dev
 
     FILE *fl = fopen(left_path, "r");
     FILE *fr = fopen(right_path, "r");
@@ -289,12 +218,8 @@ int join(char* left_path, char* right_path, char* col, char* join_type)
 <<<<<<< HEAD
     hl = get_line(MAX_LINE_LEN, fl);
 =======
-<<<<<<< HEAD
-    hl = get_line(MAX_LINE_LEN, fl);
-=======
     fgets(hl, MAX_LINE_LEN, fl);
 >>>>>>> 50f151b1b924bb3ea0351047003e6f29d8ecc70e
->>>>>>> dev
     left_col_pos = get_col_pos(hl, col);
     if(left_col_pos < 0)
     {
@@ -305,12 +230,8 @@ int join(char* left_path, char* right_path, char* col, char* join_type)
 <<<<<<< HEAD
     hr = get_line(MAX_LINE_LEN, fr);
 =======
-<<<<<<< HEAD
-    hr = get_line(MAX_LINE_LEN, fr);
-=======
     fgets(hr, MAX_LINE_LEN, fr);
 >>>>>>> 50f151b1b924bb3ea0351047003e6f29d8ecc70e
->>>>>>> dev
     right_col_pos = get_col_pos(hr, col);
     if(right_col_pos < 0)
     {
@@ -333,18 +254,10 @@ int join(char* left_path, char* right_path, char* col, char* join_type)
             join_line(left_line, right_path, left_col_pos, right_col_pos, join_type);
             left_line = get_line(MAX_LINE_LEN, fl);
 =======
-<<<<<<< HEAD
-        left_line = get_line(MAX_LINE_LEN, fl);
-        while(strcmp(left_line,"\0") != 0)
-        {
-            join_line(left_line, right_path, left_col_pos, right_col_pos, join_type);
-            left_line = get_line(MAX_LINE_LEN, fl);
-=======
         while(fgets(left_line, MAX_LINE_LEN, fl) != NULL)
         {
             join_line(left_line, right_path, left_col_pos, right_col_pos, join_type);
 >>>>>>> 50f151b1b924bb3ea0351047003e6f29d8ecc70e
->>>>>>> dev
         }
     }
     else if(strcmp(join_type, "left") == 0)
@@ -354,13 +267,8 @@ int join(char* left_path, char* right_path, char* col, char* join_type)
         left_line = get_line(MAX_LINE_LEN, fl);
         while(strcmp(left_line,"\0") != 0)
 =======
-<<<<<<< HEAD
-        left_line = get_line(MAX_LINE_LEN, fl);
-        while(strcmp(left_line,"\0") != 0)
-=======
         while(fgets(left_line, MAX_LINE_LEN, fl) != NULL)
 >>>>>>> 50f151b1b924bb3ea0351047003e6f29d8ecc70e
->>>>>>> dev
         {
             rows = join_line(left_line, right_path, left_col_pos, right_col_pos, join_type);
             if(rows == 0)
@@ -368,11 +276,7 @@ int join(char* left_path, char* right_path, char* col, char* join_type)
 <<<<<<< HEAD
             left_line = get_line(MAX_LINE_LEN, fl);
 =======
-<<<<<<< HEAD
-            left_line = get_line(MAX_LINE_LEN, fl);
-=======
 >>>>>>> 50f151b1b924bb3ea0351047003e6f29d8ecc70e
->>>>>>> dev
         }
     }
     else
@@ -382,13 +286,8 @@ int join(char* left_path, char* right_path, char* col, char* join_type)
         right_line = get_line(MAX_LINE_LEN, fr);
         while(strcmp(right_line,"\0") != 0)
 =======
-<<<<<<< HEAD
-        right_line = get_line(MAX_LINE_LEN, fr);
-        while(strcmp(right_line,"\0") != 0)
-=======
         while(fgets(right_line, MAX_LINE_LEN, fr) != NULL)
 >>>>>>> 50f151b1b924bb3ea0351047003e6f29d8ecc70e
->>>>>>> dev
         {
             rows = join_line(right_line, left_path, right_col_pos, left_col_pos, join_type);
             if(rows == 0)
@@ -400,16 +299,8 @@ int join(char* left_path, char* right_path, char* col, char* join_type)
     free(hl);
     free(hr);
 =======
-<<<<<<< HEAD
-            right_line = get_line(MAX_LINE_LEN, fr);
-        }
-    }
-    free(hl);
-    free(hr);
-=======
         }
     }
 >>>>>>> 50f151b1b924bb3ea0351047003e6f29d8ecc70e
->>>>>>> dev
     return 0;
 }
