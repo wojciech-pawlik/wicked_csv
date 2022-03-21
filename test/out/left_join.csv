@@ -1,0 +1,37 @@
+book_id,title,author_id,author_id,name,surname
+1,"Harry Potter
+and the Philosopher Stone",1,1,Jane,Rowling
+2,"Harry Potter
+and the Chamber of Secrets",1,1,Jane,Rowling
+3,"Harry Potter
+and the Prisoner of Azkaban",1,1,Jane,Rowling
+4,"Harry Potter
+and the Goblet of Fire",1,1,Jane,Rowling
+5,"Harry Potter
+and the Order of the Phoenix",1,1,Jane,Rowling
+6,"Harry Potter
+and the Half-Blood Prince",1,1,Jane,Rowling
+7,"Harry Potter
+and the Deathly Hallows",1,1,Jane,Rowling
+8,The Witcher,2,2,Andrzej,Sapkowski
+9,Sword of Destiny,2,2,Andrzej,Sapkowski
+10,The Last Wish,2,2,Andrzej,Sapkowski
+11,Blood of Elves,2,2,Andrzej,Sapkowski
+12,Time of Contempt,2,2,Andrzej,Sapkowski
+13,Baptism of Fire,2,2,Andrzej,Sapkowski
+14,The Tower of the Swallow,2,2,Andrzej,Sapkowski
+15,The Lady of the Lake,2,2,Andrzej,Sapkowski
+16,Season of Storms,2,2,Andrzej,Sapkowski
+17,"LOTR, The Fellowship of the Ring",3,3,John R.R.,Tolkien
+18,"LOTR, The Two Towers",3,3,John R.R.,Tolkien
+19,"LOTR, The Return of the King",3,3,John R.R.,Tolkien
+20,The Hobbit: or There and Back Again,3,3,John R.R.,Tolkien
+21,The Silmarillion,3,3,John R.R.,Tolkien
+22,Sherlock Holmes,11,,,
+23,Hamlet,12z,,,
+24,Macbeth,12,,,
+25,King Lear,12,,,
+26,The Tempest,12,,,
+27,The Old Man and the Sea,5,5,Ernest,Hemingway
+28,Nighteen Eighty-Four,6,6,George,Orwell
+29,Animal Farm,6,6,George,Orwell

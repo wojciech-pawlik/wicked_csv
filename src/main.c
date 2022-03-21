@@ -5,7 +5,7 @@ int main(int argc, char** argv) {
 
     if(argc < 5)
     {
-        printf("Too less arguments.\n");
+        printf("Too few arguments.\n");
         return -1;
     }
     if(strcmp(argv[1], "join") != 0)

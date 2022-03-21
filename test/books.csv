@@ -1,0 +1,37 @@
+book_id,title,author_id
+1,"Harry Potter
+and the Philosopher Stone",1
+2,"Harry Potter
+and the Chamber of Secrets",1
+3,"Harry Potter
+and the Prisoner of Azkaban",1
+4,"Harry Potter
+and the Goblet of Fire",1
+5,"Harry Potter
+and the Order of the Phoenix",1
+6,"Harry Potter
+and the Half-Blood Prince",1
+7,"Harry Potter
+and the Deathly Hallows",1
+8,The Witcher,2
+9,Sword of Destiny,2
+10,The Last Wish,2
+11,Blood of Elves,2
+12,Time of Contempt,2
+13,Baptism of Fire,2
+14,The Tower of the Swallow,2
+15,The Lady of the Lake,2
+16,Season of Storms,2
+17,"LOTR, The Fellowship of the Ring",3
+18,"LOTR, The Two Towers",3
+19,"LOTR, The Return of the King",3
+20,The Hobbit: or There and Back Again,3
+21,The Silmarillion,3
+22,Sherlock Holmes,11
+23,Hamlet,12
+24,Macbeth,12
+25,King Lear,12
+26,The Tempest,12
+27,The Old Man and the Sea,5
+28,Nighteen Eighty-Four,6
+29,Animal Farm,6
